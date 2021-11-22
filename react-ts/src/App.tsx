@@ -1,5 +1,6 @@
-import "./App.css";
-import { useEffect } from "react";
+import { useEffect } from 'react';
+import './App.css';
+
 
 function App() {
   useEffect(() => {
@@ -9,9 +10,11 @@ function App() {
     });
     req.open("POST", "http://localhost:8080/");
     req.send("request");
-  }, []);
-
-  return <div>Hello</div>;
+  }, [])
+  return (
+    <div>
+    </div>
+  );
 }
 
 export default App;
