@@ -1,14 +1,22 @@
 const http = require('http');
+const { chunk } = require('lodash');
 
 const server = http.createServer();
-const port = 3000;
+const port = 8080;
 
 server.on("listening", () => {});
 
 server.on("request", (req, res) => {
    if (req.url === "/")
    {
-      console.log("hello");
+      let data = "";
+      req.on("data", (chunk) => {
+         data += chunk;
+      });
+      req.on("end", () => {
+         console.log(data);
+      });
+      res.end("response");
    }
 });
 
