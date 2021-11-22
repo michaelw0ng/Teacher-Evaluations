@@ -4,3 +4,5 @@
 
 
 **Frontend server**: Download repo, run 'cd reactjs', then run 'npm start'
+
+Note: requires two CLIs running
