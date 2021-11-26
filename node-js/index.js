@@ -4,13 +4,13 @@ const mysql = require("mysql");
 const server = express();
 const port = 8080;
 
-const { password } = require("../password.json");
+// const { password } = require("../password.json");
 
 const db = mysql.createConnection({
   host: "localhost",
   user: "root",
   password: "password",
-  database: "teacherEvaluations",
+  database: "teacherEval",
 });
 
 db.connect((err) => {
@@ -21,7 +21,7 @@ db.connect((err) => {
 });
 
 server.get("/createdb", (req, res) => {
-  let sql = "CREATE DATABASE teacherEvaluations";
+  let sql = "CREATE DATABASE teacherEval";
   db.query(sql, (err, result) => {
     if (err) throw err;
     console.log(result);
@@ -70,6 +70,41 @@ server.get("/createtable", (req, res) => {
     });
   });
 });
+
+server.get("/insert", (req, res) => {
+  let tables = [
+    "absences_2nf",
+    "add_com_2nf",
+    "crse_2nf",
+    "crse_sem_2nf",
+    "crse_tit_2nf",
+    "exp_grade_2nf",
+    "gpa_2nf",
+    "instr_2nf",
+    "instr_rev_2nf",
+    "stud_2nf",
+    "stud_mot_2nf",
+  ];
+  let sql = "";
+  tables.forEach((table) => {
+    sql = `load data local infile '/Users/m/Downloads/${table}.csv' into table ${table} fields terminated by ',' optionally enclosed by '"';`;
+    console.log(sql);
+    db.query(sql, (err, result) => {
+      if (err) throw err;
+      console.log(result);
+    });
+  });
+  tables.forEach((table) => {
+    sql = `delete from ${table} where stdnt_id=‘stdnt_id’;`;
+    db.query(sql, (err, result) => {
+      if (err) {
+        throw err;
+      }
+      console.log(result);
+    });
+  });
+});
+
 server.get("/", (req, res) => {
   let data = "";
   req.on("data", (chunk) => {

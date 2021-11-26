@@ -10,7 +10,7 @@ function App() {
     });
     req.open("POST", "http://localhost:8080/");
     req.send("request");
-  }, [])
+  }, []);
   return (
     <div>
     </div>
