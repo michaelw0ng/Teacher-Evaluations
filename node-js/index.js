@@ -6,11 +6,10 @@ const port = 8080;
 
 // const { password } = require("../password.json");
 
-const db = mysql.createConnection({
+let db = mysql.createConnection({
   host: "localhost",
   user: "root",
   password: "password",
-  database: "teacherEval",
 });
 
 db.connect((err) => {
@@ -30,6 +29,13 @@ server.get("/createdb", (req, res) => {
 });
 
 server.get("/createtable", (req, res) => {
+  db = mysql.createConnection({
+    host: "localhost",
+    user: "root",
+    password: "password",
+    database: "teacherEval",
+    permitLocalInfile: "teacherEval",
+  });
   let sql = [];
   sql.push(
     `CREATE TABLE instr_rev_2nf (uniq_crse_id VARCHAR(64), instr_id VARCHAR(64), rat INT(1), rat_type VARCHAR(64), stdnt_id VARCHAR(64))`
@@ -72,6 +78,13 @@ server.get("/createtable", (req, res) => {
 });
 
 server.get("/insert", (req, res) => {
+  db = mysql.createConnection({
+    host: "localhost",
+    user: "root",
+    password: "password",
+    database: "teacherEval",
+    permitLocalInfile: "teacherEval",
+  });
   let tables = [
     "absences_2nf",
     "add_com_2nf",
@@ -87,19 +100,10 @@ server.get("/insert", (req, res) => {
   ];
   let sql = "";
   tables.forEach((table) => {
-    sql = `load data local infile '/Users/m/Downloads/${table}.csv' into table ${table} fields terminated by ',' optionally enclosed by '"';`;
+    sql = `load data local infile '/Users/m/Downloads/${table}.csv' into table ${table} fields terminated by ',' optionally enclosed by '"' ignore 1 lines;`;
     console.log(sql);
     db.query(sql, (err, result) => {
       if (err) throw err;
-      console.log(result);
-    });
-  });
-  tables.forEach((table) => {
-    sql = `delete from ${table} where stdnt_id=‘stdnt_id’;`;
-    db.query(sql, (err, result) => {
-      if (err) {
-        throw err;
-      }
       console.log(result);
     });
   });
