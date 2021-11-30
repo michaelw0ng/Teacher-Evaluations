@@ -1,11 +1,10 @@
-import { useEffect, useState } from 'react';
-import './App.css';
+import { useEffect, useState } from "react";
+import "./App.css";
 
-import EvaluationPage from './Components/EvaluationPage';
-
+import EvaluationPage from "./Components/EvaluationPage";
 
 function App() {
-  const [currentPage, setCurrentPage] = useState('Evaluation');
+  const [currentPage, setCurrentPage] = useState("Evaluation");
 
   useEffect(() => {
     const req = new XMLHttpRequest();
@@ -15,14 +14,7 @@ function App() {
     req.open("POST", "http://localhost:8080/");
     req.send("request");
   }, []);
-  return (
-    <div>
-      {
-        currentPage === 'Evaluation' && <EvaluationPage />
-
-      }
-    </div>
-  );
+  return <div>{currentPage === "Evaluation" && <EvaluationPage />}</div>;
 }
 
 export default App;
