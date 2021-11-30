@@ -11,6 +11,7 @@ h1 {
 .RadioInputs {
   display: grid;
   justify-content: center;
+  padding: 47px 0;
 }
 
 button {
