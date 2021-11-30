@@ -1,0 +1,9 @@
+.EvaluationPage{
+    font-size: 16px;
+    padding: 20px 20%;
+}
+
+.RadioInputs{
+    display: grid;
+    justify-content: center;
+}

@@ -1,8 +1,12 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
+
+import EvaluationPage from './Components/EvaluationPage';
 
 
 function App() {
+  const [currentPage, setCurrentPage] = useState('Evaluation');
+
   useEffect(() => {
     const req = new XMLHttpRequest();
     req.addEventListener("load", () => {
@@ -13,6 +17,10 @@ function App() {
   }, []);
   return (
     <div>
+      {
+        currentPage === 'Evaluation' && <EvaluationPage />
+
+      }
     </div>
   );
 }

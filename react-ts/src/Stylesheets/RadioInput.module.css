@@ -1,0 +1,31 @@
+.RadioInput{
+    width: 200px;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    display: grid;
+    text-align: center; 
+}
+
+.RadioInput input{
+    margin: auto;
+    cursor: pointer;
+}
+
+.RadioInputDesc{
+    width: 200px;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    display: grid;
+    text-align: center; 
+    position: relative;
+    top: -2px;
+}
+
+.RadioInputDesc span{
+    font-size: 14px;
+    overflow: hidden;
+    margin-left: -100%;
+    margin-right: -100%;
+}
+
+.RadioInputDiv{
+    margin: 20px 0px;
+}
