@@ -109,6 +109,8 @@ declare global {
   }
 }
 
+const data: Obj = {};
+
 const stagedSubmission = {
   sem_taken: "", //varchar(64)
   instr_id: "", //varchar(64)
@@ -138,9 +140,8 @@ const stagedSubmission = {
 function onSubmit() {
   console.log(stagedSubmission);
   const inputs = document.getElementsByTagName("input");
-  const data: Obj = {};
   for (let i = 0; i < 38; i++) {
-    if (i < 7) {
+    if (i < 8) {
       data[inputs[i].id] = inputs[i].value;
     } else {
       if (inputs[i].checked) {
@@ -148,6 +149,26 @@ function onSubmit() {
       }
     }
   }
+  console.log(localStorage.getItem("data"));
+  if (data.crseTitle === "" || data.uniName === "") {
+    alert("Please enter course title and university name");
+    return;
+  }
+  if (
+    !data.hasOwnProperty("Clarity") &&
+    !data.hasOwnProperty("Charisma") &&
+    !data.hasOwnProperty("Relevancy") &&
+    !data.hasOwnProperty("Reachability") &&
+    !data.hasOwnProperty("Knowledge") &&
+    !data.hasOwnProperty("Respect")
+  ) {
+    alert("Please rate");
+  }
+  if (localStorage.getItem("data") === JSON.stringify(data)) {
+    alert("Duplicate data");
+    return;
+  }
+  localStorage.setItem("data", JSON.stringify(data));
   console.log(data);
   let dataJSON = JSON.stringify(data);
 

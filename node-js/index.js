@@ -63,7 +63,7 @@ server.get("/createtable", (req, res) => {
     `create table crse_2nf(uniq_crse_id	VARCHAR(64), crse_department VARCHAR(64), crse_id	VARCHAR(64), edu_inst VARCHAR(64))`
   );
   sql.push(
-    `create table crse_tit_2nf(uniq_crse_id	VARCHAR(64), crse_tltle	VARCHAR(64))`
+    `create table crse_tit_2nf(uniq_crse_id	VARCHAR(64), crse_title	VARCHAR(64))`
   );
   sql.push(
     `create table crse_sem_2nf(uniq_crse_id	VARCHAR(64), yr_taken	VARCHAR(4), sem_taken	VARCHAR(20))`
@@ -119,5 +119,83 @@ server.get("/", (req, res) => {
   });
   res.end("response");
 });
+
+server.post("/data", (req, res) => {
+  let data = "";
+  req.on("data", (chunk) => {
+    data += chunk;
+  });
+  req.on("end", () => {
+    addToDB(JSON.parse(data), res);
+  });
+});
+
+addToDB = (data, res) => {
+  console.log(data);
+  if (data.crseTitle === "" || data.uniName === "") {
+    res.end("Please enter a course title and educational institution");
+    return;
+  }
+  db = mysql.createConnection({
+    host: "localhost",
+    user: "root",
+    password: "password",
+    database: "teacherEval",
+    permitLocalInfile: "teacherEval",
+  });
+  let sql = `select count(*) from stud_2nf;`;
+  db.query(sql, (err, result) => {
+    if (err) throw err;
+    const stud_id = result[0]["count(*)"] + 1;
+    sql = `insert into stud_2nf (stdnt_id, stdnt_first_name, stdnt_last_name) values (${stud_id}, '${data.firstName}', '${data.lastName}');`;
+    db.query(sql, (err, result) => {
+      if (err) throw err;
+      sql = `select count(*) from crse_tit_2nf;`;
+      db.query(sql, (err, result) => {
+        if (err) throw err;
+        const uniq_crse_id = result[0]["count(*)"] + 1;
+        sql = `insert into crse_tit_2nf values (${uniq_crse_id}, '${data.crseTitle}');`;
+        db.query(sql, (err, result) => {
+          if (err) throw err;
+          sql = `select count(*) from instr_2nf;`;
+          db.query(sql, (err, result) => {
+            if (err) throw err;
+            sql = `insert into crse_sem_2nf values (${uniq_crse_id}, '${data.yearTaken}', '${data.semTaken}');`;
+            db.query(sql, (err, result) => {
+              if (err) throw err;
+            });
+            sql = `insert into crse_2nf (uniq_crse_id, edu_inst) values (${uniq_crse_id}, '${data.uniName}');`;
+            db.query(sql, (err, result) => {
+              if (err) throw err;
+            });
+            const instr_id = result[0]["count(*)"] + 1;
+            sql = `insert into instr_2nf values (${instr_id}, '${data.instrFirstName}', '${data.instrLastName}');`;
+            db.query(sql, (err, result) => {
+              if (err) throw err;
+              let ratings = {};
+              data?.Clarity ? (ratings["Clarity"] = data?.Clarity) : null;
+              data?.Charisma ? (ratings["Charisma"] = data?.Charisma) : null;
+              data?.Respect ? (ratings["Respect"] = data?.Respect) : null;
+              data?.Knowledge ? (ratings["Knowledge"] = data?.Knowledge) : null;
+              data?.Reachability
+                ? (ratings["Reachability"] = data?.Reachability)
+                : null;
+              data?.Relevancy ? (ratings["Relevancy"] = data?.Relevancy) : null;
+              for (const rating in ratings) {
+                sql = `insert into instr_rev_2nf values (${uniq_crse_id}, ${instr_id}, ${parseInt(
+                  ratings[rating]
+                )}, '${rating}', ${stud_id});`;
+                db.query(sql, (err, result) => {
+                  if (err) throw err;
+                });
+              }
+              res.end("Evaluation recorded");
+            });
+          });
+        });
+      });
+    });
+  });
+};
 
 server.listen(port, console.log(`Server started on ${port}`));
