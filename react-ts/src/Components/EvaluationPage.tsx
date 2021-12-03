@@ -22,10 +22,10 @@ function EvaluationPage() {
                 <div style = {{padding: '1.5px 2px'}}>Current GPA</div>
             </div>
             <div>
-                <input style = {{margin: '0px 10px'}} type="text" id="firstName"></input>
-                <input style = {{margin: '0px 10px'}} type="text" id="lastName"></input>
-                <input style = {{margin: '0px 10px'}} type="text" id="studentId"></input>
-                <input style = {{margin: '0px 10px'}} type="text" id="studentGpa"></input>
+                <input style = {{margin: '0px 10px'}} type="text" id="firstName" maxLength = {32}></input>
+                <input style = {{margin: '0px 10px'}} type="text" id="lastName" maxLength = {32}></input>
+                <input style = {{margin: '0px 10px'}} type="text" id="studentId" maxLength = {64}></input>
+                <input style = {{margin: '0px 10px'}} type="text" id="studentGpa" maxLength = {3}></input>
             </div>
           </div>
           <br />
@@ -38,9 +38,9 @@ function EvaluationPage() {
                 <div style = {{padding: '1.5px 2px'}}>Instructor Id</div>
             </div>
             <div>
-                <input style = {{margin: '0px 10px'}} type="text" id="instrFirstName"></input>
-                <input style = {{margin: '0px 10px'}} type="text" id="instrLastName"></input>
-                <input style = {{margin: '0px 10px'}} type="text" id="instructorId"></input>
+                <input style = {{margin: '0px 10px'}} type="text" id="instrFirstName" maxLength = {32}></input>
+                <input style = {{margin: '0px 10px'}} type="text" id="instrLastName" maxLength = {32}></input>
+                <input style = {{margin: '0px 10px'}} type="text" id="instructorId" maxLength = {64}></input>
             </div>
           </div>
           <br />
@@ -53,9 +53,9 @@ function EvaluationPage() {
                 <div style = {{padding: '1.5px 2px'}}>Course Id</div>
             </div>
             <div>
-                <input style = {{margin: '0px 10px'}} type="text" id="crseTitle"></input>
-                <input style = {{margin: '0px 10px'}} type="text" id="crseDepartment"></input>
-                <input style = {{margin: '0px 10px'}} type="text" id="crseId"></input>
+                <input style = {{margin: '0px 10px'}} type="text" id="crseTitle" maxLength = {64}/>
+                <input style = {{margin: '0px 10px'}} type="text" id="crseDepartment" maxLength = {64}/>
+                <input style = {{margin: '0px 10px'}} type="text" id="crseId" maxLength = {64}/>
             </div>
             <div>
                 <div style = {{padding: '1.5px 2px'}}>University Name</div>
@@ -63,7 +63,7 @@ function EvaluationPage() {
                 <div style = {{padding: '1.5px 2px'}}>Semester Year</div>
             </div>
             <div>
-                <input style = {{margin: '0px 10px'}} type="text" id="uniName"></input>
+                <input style = {{margin: '0px 10px'}} type="text" id="uniName" maxLength = {64}></input>
                 <div style = {{margin: '0px 15px'}}>
                     <select id = 'semTaken' style = {{height: '1.6em', width: '100%'}}>
                         <option value = ''></option>
@@ -74,7 +74,7 @@ function EvaluationPage() {
                     </select>
                 </div>
                 <div style = {{margin: '0px 15px'}}>
-                    <input style = {{width:'calc(100% - 8px)'}} type="number" id="yearTaken" min = "1900" max = "2021" step = '1'></input>
+                    <input style = {{width:'calc(100% - 8px)'}} type="number" id="yearTaken" min = "1900" max = "2021" step = '1' maxLength = {4}></input>
                 </div>
             </div>
           </div>
@@ -148,10 +148,9 @@ function EvaluationPage() {
                     <div style = {{padding: '1.5px 2px'}}>Overall Rating</div>
                 </div>
                 <div>
-                    <input style = {{margin: '0px 10px'}} type="text" id="attendance"></input>
-                    <input style = {{margin: '0px 10px'}} type="text" id="expectedGpa"></input>
-                    <input style = {{margin: '0px 10px'}} type="text" id="motive"></input>
-                    <input style = {{margin: '0px 10px'}} type="text" id="comments"></input>
+                    <input style = {{margin: '0px 10px'}} type="text" id="attendance" maxLength = {64}></input>
+                    <input style = {{margin: '0px 10px'}} type="text" id="expectedGrade" maxLength = {64}></input>
+                    <input style = {{margin: '0px 10px'}} type="text" id="motive" maxLength = {64}></input>
                 </div>
             </div>
             <div className={styles.RadioInputs}>
