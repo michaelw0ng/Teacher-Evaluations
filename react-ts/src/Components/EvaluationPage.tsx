@@ -7,81 +7,170 @@ function EvaluationPage() {
     <div className={styles.EvaluationPage}>
       <h1>Teacher Evaluations</h1>
       <div style={{ textAlign: "center" }}>
-        Please fill out the following form about yourself, your experience in the course, and your Instructor:
+        Please fill out the following form about yourself, your experience in
+        the course, and your Instructor:
         <hr />
       </div>
       <form>
-        <div style = {{textAlign: 'center', padding: '10px 0px'}}>
+        <div style={{ textAlign: "center", padding: "10px 0px" }}>
           Student Information:
-          <br/>
-          <div style = {{width: '400px', margin: 'auto', display: "grid", gridTemplateColumns: '50% 50%'}}>
+          <br />
+          <div
+            style={{
+              width: "400px",
+              margin: "auto",
+              display: "grid",
+              gridTemplateColumns: "50% 50%",
+            }}
+          >
             <div>
-                <div style = {{padding: '1.5px 2px'}}>First Name</div>
-                <div style = {{padding: '1.5px 2px'}}>Last Name</div>
-                <div style = {{padding: '1.5px 2px'}}>Student Id</div>
-                <div style = {{padding: '1.5px 2px'}}>Current GPA</div>
+              <div style={{ padding: "1.5px 2px" }}>First Name</div>
+              <div style={{ padding: "1.5px 2px" }}>Last Name</div>
+              {/* <div style={{ padding: "1.5px 2px" }}>Student Id</div> */}
+              <div style={{ padding: "1.5px 2px" }}>Current GPA</div>
             </div>
             <div>
-                <input style = {{margin: '0px 10px'}} type="text" id="firstName" maxLength = {32}></input>
-                <input style = {{margin: '0px 10px'}} type="text" id="lastName" maxLength = {32}></input>
-                <input style = {{margin: '0px 10px'}} type="text" id="studentId" maxLength = {64}></input>
-                <input style = {{margin: '0px 10px'}} type="text" id="studentGpa" maxLength = {3}></input>
+              <input
+                style={{ margin: "0px 10px" }}
+                type="text"
+                id="firstName"
+                maxLength={32}
+              ></input>
+              <input
+                style={{ margin: "0px 10px" }}
+                type="text"
+                id="lastName"
+                maxLength={32}
+              ></input>
+              {/* <input
+                style={{ margin: "0px 10px" }}
+                type="text"
+                id="studentId"
+                maxLength={64}
+              ></input> */}
+              <input
+                style={{ margin: "0px 10px" }}
+                type="text"
+                id="studentGpa"
+                maxLength={3}
+              ></input>
             </div>
           </div>
           <br />
           Instructor Information:
           <br />
-          <div style = {{width: '400px', margin: 'auto', display: "grid", gridTemplateColumns: '50% 50%'}}>
+          <div
+            style={{
+              width: "400px",
+              margin: "auto",
+              display: "grid",
+              gridTemplateColumns: "50% 50%",
+            }}
+          >
             <div>
-                <div style = {{padding: '1.5px 2px'}}>First Name</div>
-                <div style = {{padding: '1.5px 2px'}}>Last Name</div>
-                <div style = {{padding: '1.5px 2px'}}>Instructor Id</div>
+              <div style={{ padding: "1.5px 2px" }}>First Name</div>
+              <div style={{ padding: "1.5px 2px" }}>Last Name</div>
+              {/* <div style={{ padding: "1.5px 2px" }}>Instructor Id</div> */}
             </div>
             <div>
-                <input style = {{margin: '0px 10px'}} type="text" id="instrFirstName" maxLength = {32}></input>
-                <input style = {{margin: '0px 10px'}} type="text" id="instrLastName" maxLength = {32}></input>
-                <input style = {{margin: '0px 10px'}} type="text" id="instructorId" maxLength = {64}></input>
+              <input
+                style={{ margin: "0px 10px" }}
+                type="text"
+                id="instrFirstName"
+                maxLength={32}
+              ></input>
+              <input
+                style={{ margin: "0px 10px" }}
+                type="text"
+                id="instrLastName"
+                maxLength={32}
+              ></input>
+              {/* <input
+                style={{ margin: "0px 10px" }}
+                type="text"
+                id="instructorId"
+                maxLength={64}
+              ></input> */}
             </div>
           </div>
           <br />
           Course Information:
           <br />
-          <div style = {{width: '400px', margin: 'auto', display: "grid", gridTemplateColumns: '50% 50%'}}>
+          <div
+            style={{
+              width: "400px",
+              margin: "auto",
+              display: "grid",
+              gridTemplateColumns: "50% 50%",
+            }}
+          >
             <div>
-                <div style = {{padding: '1.5px 2px'}}>Course Title</div>
-                <div style = {{padding: '1.5px 2px'}}>Department</div>
-                <div style = {{padding: '1.5px 2px'}}>Course Id</div>
+              <div style={{ padding: "1.5px 2px" }}>Course Title</div>
+              <div style={{ padding: "1.5px 2px" }}>Department</div>
+              <div style={{ padding: "1.5px 2px" }}>Course Id</div>
             </div>
             <div>
-                <input style = {{margin: '0px 10px'}} type="text" id="crseTitle" maxLength = {64}/>
-                <input style = {{margin: '0px 10px'}} type="text" id="crseDepartment" maxLength = {64}/>
-                <input style = {{margin: '0px 10px'}} type="text" id="crseId" maxLength = {64}/>
+              <input
+                style={{ margin: "0px 10px" }}
+                type="text"
+                id="crseTitle"
+                maxLength={64}
+              />
+              <input
+                style={{ margin: "0px 10px" }}
+                type="text"
+                id="crseDepartment"
+                maxLength={64}
+              />
+              <input
+                style={{ margin: "0px 10px" }}
+                type="text"
+                id="crseId"
+                maxLength={64}
+              />
             </div>
             <div>
-                <div style = {{padding: '1.5px 2px'}}>University Name</div>
-                <div style = {{padding: '1.5px 2px'}}>Semester Taken</div>
-                <div style = {{padding: '1.5px 2px'}}>Semester Year</div>
+              <div style={{ padding: "1.5px 2px" }}>University Name</div>
+              <div style={{ padding: "1.5px 2px" }}>Semester Taken</div>
+              <div style={{ padding: "1.5px 2px" }}>Semester Year</div>
             </div>
             <div>
-                <input style = {{margin: '0px 10px'}} type="text" id="uniName" maxLength = {64}></input>
-                <div style = {{margin: '0px 15px'}}>
-                    <select id = 'semTaken' style = {{height: '1.6em', width: '100%'}}>
-                        <option value = ''></option>
-                        <option value = 'fall'>Fall</option>
-                        <option value = 'winter'>Winter</option>
-                        <option value = 'spring'>Spring</option>
-                        <option value = 'summer'>Summer</option>
-                    </select>
-                </div>
-                <div style = {{margin: '0px 15px'}}>
-                    <input style = {{width:'calc(100% - 8px)'}} type="number" id="yearTaken" min = "1900" max = "2021" step = '1' maxLength = {4}></input>
-                </div>
+              <input
+                style={{ margin: "0px 10px" }}
+                type="text"
+                id="uniName"
+                maxLength={64}
+              ></input>
+              <div style={{ margin: "0px 15px" }}>
+                <select
+                  id="semTaken"
+                  style={{ height: "1.6em", width: "100%" }}
+                >
+                  <option value=""></option>
+                  <option value="fall">Fall</option>
+                  <option value="winter">Winter</option>
+                  <option value="spring">Spring</option>
+                  <option value="summer">Summer</option>
+                </select>
+              </div>
+              <div style={{ margin: "0px 15px" }}>
+                <input
+                  style={{ width: "calc(100% - 8px)" }}
+                  type="number"
+                  id="yearTaken"
+                  min="1900"
+                  max="2021"
+                  step="1"
+                  maxLength={4}
+                ></input>
+              </div>
             </div>
           </div>
         </div>
-        <hr/>
-        <div style = {{textAlign: 'center'}}>
-        Rate your Instructor and the Course on the following qualities from a scale of 1 to 5:
+        <hr />
+        <div style={{ textAlign: "center" }}>
+          Rate your Instructor and the Course on the following qualities from a
+          scale of 1 to 5:
           <div className={styles.RadioInputs}>
             <RadioInput
               stagedSubmission={stagedSubmission}
@@ -126,10 +215,10 @@ function EvaluationPage() {
               categoryDesc={""}
             />
             <RadioInput
-                stagedSubmission={stagedSubmission}
-                categoryName={"Clear Requirements"}
-                categoryId={"clearRequirements"}
-                categoryDesc={""}
+              stagedSubmission={stagedSubmission}
+              categoryName={"Clear Requirements"}
+              categoryId={"clearRequirements"}
+              categoryDesc={""}
             />
             <RadioInput
               stagedSubmission={stagedSubmission}
@@ -138,41 +227,64 @@ function EvaluationPage() {
               categoryDesc={""}
             />
           </div>
-          <hr />  
-          <div style = {{textAlign: 'center', padding: '10px 0px'}}>
-            <div style = {{width: '400px', margin: 'auto', display: "grid", gridTemplateColumns: '50% 50%'}}>
-                <div>
-                    <div style = {{padding: '1.5px 2px'}}>Student Absences</div>
-                    <div style = {{padding: '1.5px 2px'}}>Expected Grade</div>
-                    <div style = {{padding: '1.5px 2px'}}>Student Motive</div>
-                    <div style = {{padding: '1.5px 2px'}}>Overall Rating</div>
-                </div>
-                <div>
-                    <input style = {{margin: '0px 10px'}} type="text" id="attendance" maxLength = {64}></input>
-                    <input style = {{margin: '0px 10px'}} type="text" id="expectedGrade" maxLength = {64}></input>
-                    <input style = {{margin: '0px 10px'}} type="text" id="motive" maxLength = {64}></input>
-                </div>
+          <hr />
+          <div style={{ textAlign: "center", padding: "10px 0px" }}>
+            <div
+              style={{
+                width: "400px",
+                margin: "auto",
+                display: "grid",
+                gridTemplateColumns: "50% 50%",
+              }}
+            >
+              <div>
+                <div style={{ padding: "1.5px 2px" }}>Student Absences</div>
+                <div style={{ padding: "1.5px 2px" }}>Expected Grade</div>
+                <div style={{ padding: "1.5px 2px" }}>Student Motive</div>
+                {/* <div style = {{padding: '1.5px 2px'}}>Overall Rating</div> */}
+              </div>
+              <div>
+                <input
+                  style={{ margin: "0px 10px" }}
+                  type="text"
+                  id="absences"
+                  maxLength={64}
+                ></input>
+                <input
+                  style={{ margin: "0px 10px" }}
+                  type="text"
+                  id="expectedGrade"
+                  maxLength={64}
+                ></input>
+                <input
+                  style={{ margin: "0px 10px" }}
+                  type="text"
+                  id="motive"
+                  maxLength={64}
+                ></input>
+              </div>
             </div>
             <div className={styles.RadioInputs}>
-                <RadioInput
-                    stagedSubmission={stagedSubmission}
-                    categoryName={"Overall Rating"}
-                    categoryId={"rating"}
-                    categoryDesc={""}
-                />
+              <RadioInput
+                stagedSubmission={stagedSubmission}
+                categoryName={"Overall Rating"}
+                categoryId={"rating"}
+                categoryDesc={""}
+              />
             </div>
             Additional Comments:
             <br />
-            <textarea style = {{width: '350px', height: '5em', resize: 'none'}} maxLength = {64}/>
+            <textarea
+              style={{ width: "350px", height: "5em", resize: "none" }}
+              maxLength={64}
+            />
           </div>
           <br />
         </div>
       </form>
 
-
-      
-      <div onClick={onSubmit} style = {{textAlign:'center'}}>
-        <button style = {{padding: '5px', borderRadius: '10px'}}>Submit</button>
+      <div onClick={onSubmit} style={{ textAlign: "center" }}>
+        <button style={{ padding: "5px", borderRadius: "10px" }}>Submit</button>
       </div>
     </div>
   );
@@ -213,18 +325,24 @@ const stagedSubmission = {
 };
 
 function onSubmit() {
-  console.log(stagedSubmission);
+  // console.log(stagedSubmission);
   const inputs = document.getElementsByTagName("input");
-  for (let i = 0; i < 38; i++) {
-    if (i < 8) {
+  for (let i = 0; i < 63; i++) {
+    if (inputs[i].checked) {
+      data[inputs[i].name] = inputs[i].value;
+    }
+    if (inputs[i].id != "") {
       data[inputs[i].id] = inputs[i].value;
-    } else {
-      if (inputs[i].checked) {
-        data[inputs[i].name] = inputs[i].value;
-      }
     }
   }
-  console.log(localStorage.getItem("data"));
+  const comment = document.getElementsByTagName("textarea")[0].value;
+  if (comment != "") {
+    data["comment"] = comment;
+  }
+  const semTaken = (document.getElementById("semTaken") as HTMLInputElement)!
+    .value;
+  data["semTaken"] = semTaken;
+  // console.log(localStorage.getItem("data"));
   if (data.crseTitle === "" || data.uniName === "") {
     alert("Please enter course title and university name");
     return;
@@ -235,7 +353,11 @@ function onSubmit() {
     !data.hasOwnProperty("Relevancy") &&
     !data.hasOwnProperty("Reachability") &&
     !data.hasOwnProperty("Knowledge") &&
-    !data.hasOwnProperty("Respect")
+    !data.hasOwnProperty("Respect") &&
+    !data.hasOwnProperty("Punctuality") &&
+    !data.hasOwnProperty("Clear Requirements") &&
+    !data.hasOwnProperty("Organization") &&
+    !data.hasOwnProperty("Overall Rating")
   ) {
     alert("Please rate");
   }

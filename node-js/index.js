@@ -126,6 +126,7 @@ server.post("/data", (req, res) => {
     data += chunk;
   });
   req.on("end", () => {
+    console.log(JSON.parse(data));
     addToDB(JSON.parse(data), res);
   });
 });
@@ -147,24 +148,44 @@ addToDB = (data, res) => {
   db.query(sql, (err, result) => {
     if (err) throw err;
     const stud_id = result[0]["count(*)"] + 1;
-    sql = `insert into stud_2nf (stdnt_id, stdnt_first_name, stdnt_last_name) values (${stud_id}, '${data.firstName}', '${data.lastName}');`;
+    sql = `insert into stud_2nf values (${stud_id}, '${data.firstName}', '${data.lastName}');`;
     db.query(sql, (err, result) => {
       if (err) throw err;
+      sql = `insert into gpa_2nf values (${stud_id}, '${data.studentGpa}')`;
+      db.query(sql, (err, result) => {
+        if (err) throw err;
+      });
       sql = `select count(*) from crse_tit_2nf;`;
       db.query(sql, (err, result) => {
         if (err) throw err;
         const uniq_crse_id = result[0]["count(*)"] + 1;
+        sql = `insert into absences_2nf values (${uniq_crse_id}, ${stud_id}, '${data.absences}')`;
+        db.query(sql, (err, result) => {
+          if (err) throw err;
+        });
+        sql = `insert into exp_grade_2nf values (${uniq_crse_id}, ${stud_id}, '${data.expectedGrade}')`;
+        db.query(sql, (err, result) => {
+          if (err) throw err;
+        });
+        sql = `insert into stud_mot_2nf values (${uniq_crse_id}, ${stud_id}, '${data.motive}')`;
+        db.query(sql, (err, result) => {
+          if (err) throw err;
+        });
+        sql = `insert into add_com_2nf values (${uniq_crse_id}, ${stud_id}, '${data.comment}')`;
+        db.query(sql, (err, result) => {
+          if (err) throw err;
+        });
+        sql = `insert into crse_sem_2nf values (${uniq_crse_id}, '${data.yearTaken}', '${data.semTaken}')`;
+        db.query(sql, (err, result) => {
+          if (err) throw err;
+        });
         sql = `insert into crse_tit_2nf values (${uniq_crse_id}, '${data.crseTitle}');`;
         db.query(sql, (err, result) => {
           if (err) throw err;
           sql = `select count(*) from instr_2nf;`;
           db.query(sql, (err, result) => {
             if (err) throw err;
-            sql = `insert into crse_sem_2nf values (${uniq_crse_id}, '${data.yearTaken}', '${data.semTaken}');`;
-            db.query(sql, (err, result) => {
-              if (err) throw err;
-            });
-            sql = `insert into crse_2nf (uniq_crse_id, edu_inst) values (${uniq_crse_id}, '${data.uniName}');`;
+            sql = `insert into crse_2nf values (${uniq_crse_id}, '${data.crseId}', '${data.crseDepartment}', '${data.uniName}');`;
             db.query(sql, (err, result) => {
               if (err) throw err;
             });
@@ -181,6 +202,18 @@ addToDB = (data, res) => {
                 ? (ratings["Reachability"] = data?.Reachability)
                 : null;
               data?.Relevancy ? (ratings["Relevancy"] = data?.Relevancy) : null;
+              data?.Organization
+                ? (ratings["Organization"] = data?.Organization)
+                : null;
+              data?.Punctuality
+                ? (ratings["Punctuality"] = data?.Punctuality)
+                : null;
+              data["Clear Requirements"]
+                ? (ratings["Clear Requirements"] = data["Clear Requirements"])
+                : null;
+              data["Overall Rating"]
+                ? (ratings["Overall Rating"] = data["Overall Rating"])
+                : null;
               for (const rating in ratings) {
                 sql = `insert into instr_rev_2nf values (${uniq_crse_id}, ${instr_id}, ${parseInt(
                   ratings[rating]
