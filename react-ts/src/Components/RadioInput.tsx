@@ -11,7 +11,7 @@ interface RadioInputProps {
 function RadioInput(props:RadioInputProps){
     return(      
         <div className = {styles.RadioInputDiv}>     
-            <div style = {{textAlign: 'center'}}>{props.categoryName}</div>
+            <div style = {{textAlign: 'center', paddingBottom: '5px'}}>{props.categoryName}</div>
             <div className = {styles.RadioInput}>
                 <span>1</span>
                 <input type = 'radio' name = {props.categoryName} value = '1' onClick = {() => {props.stagedSubmission[props.categoryId] = 1}}/>

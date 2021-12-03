@@ -1,6 +1,10 @@
 .EvaluationPage {
   font-size: 16px;
-  padding: 20px 20%;
+  width: 600px;
+  margin: auto;
+  padding: 20px 40px;
+  border-left: solid black 1.5px;
+  border-right: solid black 1.5px;
 }
 
 h1 {
@@ -11,7 +15,6 @@ h1 {
 .RadioInputs {
   display: grid;
   justify-content: center;
-  padding: 47px 0;
 }
 
 button {
@@ -22,8 +25,6 @@ button {
   cursor: pointer;
 }
 
-.columns {
-  float: left;
-  width: 50%;
-  text-align: center;
+hr {
+    margin: 10px;
 }

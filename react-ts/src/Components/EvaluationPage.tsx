@@ -7,55 +7,81 @@ function EvaluationPage() {
     <div className={styles.EvaluationPage}>
       <h1>Teacher Evaluations</h1>
       <div style={{ textAlign: "center" }}>
-        On a scale of 1 to 5, rate the following prompts based on...
-        <br />
-        ...your Instructor:
-        <br />
+        Please fill out the following form about yourself, your experience in the course, and your Instructor:
+        <hr />
       </div>
       <form>
-        <div className={styles.columns} style={{ padding: "51px 0" }}>
-          First Name:
+        <div style = {{textAlign: 'center', padding: '10px 0px'}}>
+          Student Information:
+          <br/>
+          <div style = {{width: '400px', margin: 'auto', display: "grid", gridTemplateColumns: '50% 50%'}}>
+            <div>
+                <div style = {{padding: '1.5px 2px'}}>First Name</div>
+                <div style = {{padding: '1.5px 2px'}}>Last Name</div>
+                <div style = {{padding: '1.5px 2px'}}>Student Id</div>
+                <div style = {{padding: '1.5px 2px'}}>Current GPA</div>
+            </div>
+            <div>
+                <input style = {{margin: '0px 10px'}} type="text" id="firstName"></input>
+                <input style = {{margin: '0px 10px'}} type="text" id="lastName"></input>
+                <input style = {{margin: '0px 10px'}} type="text" id="studentId"></input>
+                <input style = {{margin: '0px 10px'}} type="text" id="studentGpa"></input>
+            </div>
+          </div>
           <br />
-          <input type="text" id="firstName"></input>
+          Instructor Information:
           <br />
+          <div style = {{width: '400px', margin: 'auto', display: "grid", gridTemplateColumns: '50% 50%'}}>
+            <div>
+                <div style = {{padding: '1.5px 2px'}}>First Name</div>
+                <div style = {{padding: '1.5px 2px'}}>Last Name</div>
+                <div style = {{padding: '1.5px 2px'}}>Instructor Id</div>
+            </div>
+            <div>
+                <input style = {{margin: '0px 10px'}} type="text" id="instrFirstName"></input>
+                <input style = {{margin: '0px 10px'}} type="text" id="instrLastName"></input>
+                <input style = {{margin: '0px 10px'}} type="text" id="instructorId"></input>
+            </div>
+          </div>
           <br />
-          Last Name:
+          Course Information:
           <br />
-          <input type="text" id="lastName"></input>
-          <br />
-          <br />
-          Year Taken:
-          <br />
-          <input type="text" id="yearTaken"></input>
-          <br />
-          <br />
-          Semester Taken:
-          <br />
-          <input type="text" id="semTaken"></input>
-          <br />
-          <br />
-          Instructor First Name:
-          <br />
-          <input type="text" id="instrFirstName"></input>
-          <br />
-          <br />
-          Instructor Last Name:
-          <br />
-          <input type="text" id="instrLastName"></input>
-          <br />
-          <br />
-          Course Title:
-          <br />
-          <input type="text" id="crseTitle"></input>
-          <br />
-          <br />
-          University Name:
-          <br />
-          <input type="text" id="uniName"></input>
-          <br />
-          <br />
+          <div style = {{width: '400px', margin: 'auto', display: "grid", gridTemplateColumns: '50% 50%'}}>
+            <div>
+                <div style = {{padding: '1.5px 2px'}}>Course Title</div>
+                <div style = {{padding: '1.5px 2px'}}>Department</div>
+                <div style = {{padding: '1.5px 2px'}}>Course Id</div>
+            </div>
+            <div>
+                <input style = {{margin: '0px 10px'}} type="text" id="crseTitle"></input>
+                <input style = {{margin: '0px 10px'}} type="text" id="crseDepartment"></input>
+                <input style = {{margin: '0px 10px'}} type="text" id="crseId"></input>
+            </div>
+            <div>
+                <div style = {{padding: '1.5px 2px'}}>University Name</div>
+                <div style = {{padding: '1.5px 2px'}}>Semester Taken</div>
+                <div style = {{padding: '1.5px 2px'}}>Semester Year</div>
+            </div>
+            <div>
+                <input style = {{margin: '0px 10px'}} type="text" id="uniName"></input>
+                <div style = {{margin: '0px 15px'}}>
+                    <select id = 'semTaken' style = {{height: '1.6em', width: '100%'}}>
+                        <option value = ''></option>
+                        <option value = 'fall'>Fall</option>
+                        <option value = 'winter'>Winter</option>
+                        <option value = 'spring'>Spring</option>
+                        <option value = 'summer'>Summer</option>
+                    </select>
+                </div>
+                <div style = {{margin: '0px 15px'}}>
+                    <input style = {{width:'calc(100% - 8px)'}} type="number" id="yearTaken" min = "1900" max = "2021" step = '1'></input>
+                </div>
+            </div>
+          </div>
         </div>
-        <div className={styles.columns}>
+        <hr/>
+        <div style = {{textAlign: 'center'}}>
+        Rate your Instructor and the Course on the following qualities from a scale of 1 to 5:
           <div className={styles.RadioInputs}>
             <RadioInput
               stagedSubmission={stagedSubmission}
@@ -93,11 +119,61 @@ function EvaluationPage() {
               categoryId={"relevancy"}
               categoryDesc={""}
             />
+            <RadioInput
+              stagedSubmission={stagedSubmission}
+              categoryName={"Punctuality"}
+              categoryId={"punctuality"}
+              categoryDesc={""}
+            />
+            <RadioInput
+                stagedSubmission={stagedSubmission}
+                categoryName={"Clear Requirements"}
+                categoryId={"clearRequirements"}
+                categoryDesc={""}
+            />
+            <RadioInput
+              stagedSubmission={stagedSubmission}
+              categoryName={"Organization"}
+              categoryId={"courseOrganization"}
+              categoryDesc={""}
+            />
           </div>
+          <hr />  
+          <div style = {{textAlign: 'center', padding: '10px 0px'}}>
+            <div style = {{width: '400px', margin: 'auto', display: "grid", gridTemplateColumns: '50% 50%'}}>
+                <div>
+                    <div style = {{padding: '1.5px 2px'}}>Student Absences</div>
+                    <div style = {{padding: '1.5px 2px'}}>Expected Grade</div>
+                    <div style = {{padding: '1.5px 2px'}}>Student Motive</div>
+                    <div style = {{padding: '1.5px 2px'}}>Overall Rating</div>
+                </div>
+                <div>
+                    <input style = {{margin: '0px 10px'}} type="text" id="attendance"></input>
+                    <input style = {{margin: '0px 10px'}} type="text" id="expectedGpa"></input>
+                    <input style = {{margin: '0px 10px'}} type="text" id="motive"></input>
+                    <input style = {{margin: '0px 10px'}} type="text" id="comments"></input>
+                </div>
+            </div>
+            <div className={styles.RadioInputs}>
+                <RadioInput
+                    stagedSubmission={stagedSubmission}
+                    categoryName={"Overall Rating"}
+                    categoryId={"rating"}
+                    categoryDesc={""}
+                />
+            </div>
+            Additional Comments:
+            <br />
+            <textarea style = {{width: '350px', height: '5em', resize: 'none'}} maxLength = {64}/>
+          </div>
+          <br />
         </div>
       </form>
-      <div onClick={onSubmit}>
-        <button>Submit</button>
+
+
+      
+      <div onClick={onSubmit} style = {{textAlign:'center'}}>
+        <button style = {{padding: '5px', borderRadius: '10px'}}>Submit</button>
       </div>
     </div>
   );
