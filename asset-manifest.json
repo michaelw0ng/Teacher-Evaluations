@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/TeacherEvaluations/static/css/main.156d1d49.chunk.css",
+    "main.js": "/TeacherEvaluations/static/js/main.766e8a51.chunk.js",
+    "main.js.map": "/TeacherEvaluations/static/js/main.766e8a51.chunk.js.map",
+    "runtime-main.js": "/TeacherEvaluations/static/js/runtime-main.c39178c1.js",
+    "runtime-main.js.map": "/TeacherEvaluations/static/js/runtime-main.c39178c1.js.map",
+    "static/js/2.fffa371d.chunk.js": "/TeacherEvaluations/static/js/2.fffa371d.chunk.js",
+    "static/js/2.fffa371d.chunk.js.map": "/TeacherEvaluations/static/js/2.fffa371d.chunk.js.map",
+    "static/js/3.9136a0bc.chunk.js": "/TeacherEvaluations/static/js/3.9136a0bc.chunk.js",
+    "static/js/3.9136a0bc.chunk.js.map": "/TeacherEvaluations/static/js/3.9136a0bc.chunk.js.map",
+    "index.html": "/TeacherEvaluations/index.html",
+    "static/css/main.156d1d49.chunk.css.map": "/TeacherEvaluations/static/css/main.156d1d49.chunk.css.map",
+    "static/js/2.fffa371d.chunk.js.LICENSE.txt": "/TeacherEvaluations/static/js/2.fffa371d.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.c39178c1.js",
+    "static/js/2.fffa371d.chunk.js",
+    "static/css/main.156d1d49.chunk.css",
+    "static/js/main.766e8a51.chunk.js"
+  ]
+}
