@@ -4,12 +4,12 @@ const mysql = require("mysql");
 const server = express();
 const port = 8080;
 
-// const { password } = require("../password.json");
+const { password } = require("../password.json");
 
 let db = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "password",
+  host: "bhztkq3dpvak9gjck3og-mysql.services.clever-cloud.com",
+  user: "uckbtzg2jpingjyt",
+  password: password,
 });
 
 db.connect((err) => {
@@ -20,7 +20,7 @@ db.connect((err) => {
 });
 
 server.get("/createdb", (req, res) => {
-  let sql = "CREATE DATABASE teacherEval";
+  let sql = "CREATE DATABASE sql5461052";
   db.query(sql, (err, result) => {
     if (err) throw err;
     console.log(result);
@@ -30,11 +30,11 @@ server.get("/createdb", (req, res) => {
 
 server.get("/createtable", (req, res) => {
   db = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "password",
-    database: "teacherEval",
-    permitLocalInfile: "teacherEval",
+    host: "bhztkq3dpvak9gjck3og-mysql.services.clever-cloud.com",
+    user: "uckbtzg2jpingjyt",
+    password: password,
+    database: "bhztkq3dpvak9gjck3og",
+    permitLocalInfile: "bhztkq3dpvak9gjck3og",
   });
   let sql = [];
   sql.push(
@@ -77,38 +77,6 @@ server.get("/createtable", (req, res) => {
   });
 });
 
-server.get("/insert", (req, res) => {
-  db = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "password",
-    database: "teacherEval",
-    permitLocalInfile: "teacherEval",
-  });
-  let tables = [
-    "absences_2nf",
-    "add_com_2nf",
-    "crse_2nf",
-    "crse_sem_2nf",
-    "crse_tit_2nf",
-    "exp_grade_2nf",
-    "gpa_2nf",
-    "instr_2nf",
-    "instr_rev_2nf",
-    "stud_2nf",
-    "stud_mot_2nf",
-  ];
-  let sql = "";
-  tables.forEach((table) => {
-    sql = `load data local infile '/Users/m/Downloads/${table}.csv' into table ${table} fields terminated by ',' optionally enclosed by '"' ignore 1 lines;`;
-    console.log(sql);
-    db.query(sql, (err, result) => {
-      if (err) throw err;
-      console.log(result);
-    });
-  });
-});
-
 server.get("/", (req, res) => {
   let data = "";
   req.on("data", (chunk) => {
@@ -118,6 +86,20 @@ server.get("/", (req, res) => {
     console.log(data);
   });
   res.end("response");
+});
+
+server.get("/query1", (req, res) => {
+  db = mysql.createConnection({
+    host: "bhztkq3dpvak9gjck3og-mysql.services.clever-cloud.com",
+    user: "uckbtzg2jpingjyt",
+    password: password,
+    database: "bhztkq3dpvak9gjck3og",
+  });
+  let sql = `select * from stud_2nf;`;
+  db.query(sql, (err, result) => {
+    if (err) throw err;
+    console.log(result);
+  });
 });
 
 server.post("/data", (req, res) => {
@@ -138,11 +120,11 @@ addToDB = (data, res) => {
     return;
   }
   db = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "password",
-    database: "teacherEval",
-    permitLocalInfile: "teacherEval",
+    host: "bhztkq3dpvak9gjck3og-mysql.services.clever-cloud.com",
+    user: "uckbtzg2jpingjyt",
+    password: password,
+    database: "bhztkq3dpvak9gjck3og",
+    permitLocalInfile: "bhztkq3dpvak9gjck3og",
   });
   let sql = `select count(*) from stud_2nf;`;
   db.query(sql, (err, result) => {

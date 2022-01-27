@@ -1,0 +1,11 @@
+{
+  "name": "teacherevaluations",
+  "version": "1.0.0",
+  "description": "Send teacher evaluations to MySQL database",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Michael Wong, Sunny Kwong",
+  "license": "UNLICENSED"
+}
