@@ -4,8 +4,18 @@
   "description": "Send teacher evaluations to MySQL database",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Michael Wong, Sunny Kwong",
-  "license": "UNLICENSED"
+  "license": "UNLICENSED",
+  "homepage": "",
+  "engines": {
+    "node": "16.x"
+  },
+  "dependencies": {
+    "dotenv": "^14.3.2",
+    "express": "^4.17.2",
+    "mysql": "^2.18.1"
+  }
 }
