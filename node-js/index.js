@@ -1,15 +1,14 @@
 const express = require("express");
 const mysql = require("mysql");
+require("dotenv").config();
 
 const server = express();
-const port = 8080;
-
-const { password } = require("../password.json");
+const port = process.env.PORT || 80;
 
 let db = mysql.createConnection({
-  host: "bhztkq3dpvak9gjck3og-mysql.services.clever-cloud.com",
-  user: "uckbtzg2jpingjyt",
-  password: password,
+  host: process.env.HOST,
+  user: process.env.USER,
+  password: process.env.PASSWORD,
 });
 
 db.connect((err) => {
@@ -30,11 +29,11 @@ server.get("/createdb", (req, res) => {
 
 server.get("/createtable", (req, res) => {
   db = mysql.createConnection({
-    host: "bhztkq3dpvak9gjck3og-mysql.services.clever-cloud.com",
-    user: "uckbtzg2jpingjyt",
-    password: password,
-    database: "bhztkq3dpvak9gjck3og",
-    permitLocalInfile: "bhztkq3dpvak9gjck3og",
+    host: process.env.HOST,
+    user: process.env.USER,
+    password: process.env.PASSWORD,
+    database: process.env.DB,
+    permitLocalInfile: process.env.DB,
   });
   let sql = [];
   sql.push(
@@ -90,10 +89,10 @@ server.get("/", (req, res) => {
 
 server.get("/query1", (req, res) => {
   db = mysql.createConnection({
-    host: "bhztkq3dpvak9gjck3og-mysql.services.clever-cloud.com",
-    user: "uckbtzg2jpingjyt",
-    password: password,
-    database: "bhztkq3dpvak9gjck3og",
+    host: process.env.HOST,
+    user: process.env.USER,
+    password: process.env.PASSWORD,
+    database: process.env.DB,
   });
   let sql = `select * from stud_2nf;`;
   db.query(sql, (err, result) => {
@@ -120,11 +119,11 @@ addToDB = (data, res) => {
     return;
   }
   db = mysql.createConnection({
-    host: "bhztkq3dpvak9gjck3og-mysql.services.clever-cloud.com",
-    user: "uckbtzg2jpingjyt",
-    password: password,
-    database: "bhztkq3dpvak9gjck3og",
-    permitLocalInfile: "bhztkq3dpvak9gjck3og",
+    host: process.env.HOST,
+    user: process.env.USER,
+    password: process.env.PASSWORD,
+    database: process.env.DB,
+    permitLocalInfile: process.env.DB,
   });
   let sql = `select count(*) from stud_2nf;`;
   db.query(sql, (err, result) => {
